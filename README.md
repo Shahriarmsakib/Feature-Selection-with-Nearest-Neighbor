@@ -1,14 +1,30 @@
-# Forward and Backward Feature Selection with Nearest Neighbor
-This repository showcases the implementation of Forward and Backward Feature Selection using the Nearest Neighbor algorithm as part of the Artificial Intelligence (CS205) class project. The project's main objective is to explore the effectiveness of feature selection techniques in improving the performance of the Nearest Neighbor classifier.
+# Wrapper Feature Selection with a Nearest-Neighbor Classifier
 
-# The project encompasses the following key tasks:
+![Python](https://img.shields.io/badge/python-NumPy%20%7C%20pandas-blue)
+![Type](https://img.shields.io/badge/CS%20205%20Artificial%20Intelligence-UC%20Riverside-lightgrey)
 
-Nearest Neighbor Implementation: The Nearest Neighbor algorithm is coded up to serve as the foundation for subsequent feature selection techniques.
+This project implements a nearest-neighbor classifier from scratch and wraps it in two greedy feature-search strategies, **forward selection** and **backward elimination**. The goal is to find the feature subset that maximizes classification accuracy.
 
-Feature Search using Nearest Neighbor: The Nearest Neighbor algorithm is utilized within a "wrapper" to perform feature selection using two different approaches: Forward Selection and Backward Elimination.
+*Project 2 for CS 205 (Artificial Intelligence), UC Riverside. The write-up is in [`Project2_Report_Shahriar (1).pdf`](Project2_Report_Shahriar%20(1).pdf).*
 
-Processing Synthetic Datasets: Three synthetic datasets of increasing sizes are processed to evaluate the impact of feature selection on classification accuracy.
+## Method
 
-Processing Real-world Classification Dataset: A real-world classification dataset is employed to assess the effectiveness of the Nearest Neighbor algorithm with feature selection.
+- **Classifier:** a k-nearest-neighbor classifier (k = 1 by default) with Euclidean distance on min-max-normalized features, evaluated by 10-fold cross-validation.
+- **Forward selection:** start from the empty set; at each step, add the feature that gives the highest accuracy.
+- **Backward elimination:** start from all features; at each step, remove the feature whose removal gives the highest accuracy.
+- **Datasets:** three synthetic datasets of increasing size (small, large and extra-large), plus the real-world Pima Indians Diabetes dataset (`diabetes.csv`).
 
-Report: A comprehensive information is provided, detailing the methodology, experimental setup, results, and insights gained from the project.
+## Files
+
+| File | Content |
+|---|---|
+| `knn-feature-selection.ipynb` | Implementation, search traces and accuracy plots |
+| `CS170_small_Data__18.txt`, `CS170_large_Data__31.txt`, `CS170_XXXlarge_Data__12.txt` | Synthetic datasets (first column = class label) |
+| `diabetes.csv` | Real-world dataset |
+
+## Run
+
+```bash
+pip install numpy pandas matplotlib seaborn tqdm
+jupyter notebook knn-feature-selection.ipynb
+```
